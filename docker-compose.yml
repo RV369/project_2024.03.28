@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build: ./src/
     command: uvicorn src.main:app --host 0.0.0.0 --reload
     volumes:
       - uploaded_files:/app/uploaded_files
