@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    image: rv369/project_2024.03.28_backend:latest
+    command: uvicorn src.main:app --host 0.0.0.0 --reload
+    volumes:
+      - uploaded_files:/app/uploaded_files
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRESS_DB_USER}:${POSTGRESS_DB_PASSWORD}@db:5432/fastapi_db
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=${POSTGRESS_DB_USER}
+      - POSTGRES_PASSWORD=${POSTGRESS_DB_PASSWORD}
+      - POSTGRES_DB=fastapi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  uploaded_files:
+  
