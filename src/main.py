@@ -50,7 +50,7 @@ async def upload(
         session.add(new_file)
         await session.commit()
         await session.refresh(new_file)
-        return file.filename, new_file
+        return file.filename
 
 
 @app.get("/v1/download/{UUID}")
