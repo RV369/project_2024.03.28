@@ -14,5 +14,5 @@ docker-compose up
 http://127.0.0.1:8000/docs
 http://127.0.0.1:8000/redoc
 
-# Проект запужен по адресу :
+# Проект развернут по адресу :
 http://project369.zapto.org/docs
