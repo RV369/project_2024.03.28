@@ -1,5 +1,4 @@
 import uuid
-from datetime import date
 
 from sqlmodel import Field, SQLModel
 
@@ -11,4 +10,4 @@ class NameFile(SQLModel):
 class UploadedFile(NameFile, table=True):
     uid: str = Field(uuid.UUID, primary_key=True)
     filename: str
-    upload_date: date
+    upload_date: str

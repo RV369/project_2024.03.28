@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 from sqlmodel import SQLModel
 
-DATABASE_URL = "postgresql+asyncpg://username:password@db:5432/fastapi_db"
+DATABASE_URL = 'postgresql+asyncpg://username:password@db:5432/fastapi_db'
 
 engine = create_async_engine(DATABASE_URL, echo=False, future=True)
 
@@ -14,7 +14,9 @@ async def init_db():
 
 async def get_session() -> AsyncSession:  # type: ignore
     async_session = sessionmaker(
-        engine, class_=AsyncSession, expire_on_commit=False
+        engine,
+        class_=AsyncSession,
+        expire_on_commit=False,
     )
     async with async_session() as session:
         yield session
