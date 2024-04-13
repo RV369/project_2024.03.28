@@ -86,7 +86,7 @@ async def find(
             )
             find = result.scalars().all()
     except Exception as e:
-        raise HTTPException(f'{e}')
+        raise HTTPException(f'{e}', detail='Ошибка запроса базы данных')
     return [
         FileSchema(uid=c.uid, filename=c.filename, date=c.upload_date)
         for c in find
@@ -119,7 +119,7 @@ async def upload(
             await session.commit()
             await session.refresh(new_file)
     except Exception as e:
-        raise HTTPException(f'{e}', detail='File upload error')
+        raise HTTPException(f'{e}', detail='Ошибка загрузки файла')
     return file.filename
 
 
@@ -135,6 +135,8 @@ async def download_file(UUID):
                 },
             )
         else:
-            raise HTTPException(status_code=404, detail='File not found')
+            raise HTTPException(
+                status_code=404, detail='Искомый файл отсутствует',
+            )
     except Exception as e:
-        raise HTTPException(f'{e}', detail='File download error')
+        raise HTTPException(f'{e}', detail='Ошибка скачивания файла')
