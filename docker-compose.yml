@@ -14,6 +14,7 @@ services:
       - .env
     environment:
       - DATABASE_URL=postgresql+asyncpg://${POSTGRESS_DB_USER}:${POSTGRESS_DB_PASSWORD}@db:5432/fastapi_db
+    restart: always
   db:
     image: postgres:16.2
     environment:
@@ -26,6 +27,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     env_file:
       - .env
+    restart: always
 
 volumes:
   postgres_data:
