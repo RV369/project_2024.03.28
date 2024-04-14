@@ -6,9 +6,11 @@ from pydantic import BaseSettings
 class Settings(BaseSettings):
     POSTGRESS_DB_USER: str = os.getenv('POSTGRESS_DB_USER')
     POSTGRESS_DB_PASSWORD: str = os.getenv('POSTGRESS_DB_PASSWORD')
+    DB_DATABASE: str = os.getenv('DB_DATABASE')
+    DB_PORT: str = os.getenv('DB_PORT')
     DATABASE_URL = (
         f'postgresql+asyncpg://{POSTGRESS_DB_USER}:'
-        f'{POSTGRESS_DB_PASSWORD}@db:5432/fastapi_db'
+        f'{POSTGRESS_DB_PASSWORD}@db:{DB_PORT}/{DB_DATABASE}'
     )
 
     class Config:
