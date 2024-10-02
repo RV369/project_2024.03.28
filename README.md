@@ -5,7 +5,7 @@
 - FastAPI
 - Python 3.9.10
 - Docker / Docker compose
-- PostgreSQL 16.2 / asyncpg
+- PostgreSQL 13 / asyncpg
 - Uvicorn
 
 Для развертывания необходимо склонировать репозиторий:
