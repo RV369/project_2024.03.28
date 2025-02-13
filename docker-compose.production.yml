@@ -29,7 +29,6 @@ services:
       - .env
     restart: always
 
-
 volumes:
   postgres_data:
   uploaded_files:
