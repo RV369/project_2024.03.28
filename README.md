@@ -11,7 +11,7 @@
 
 Для развертывания необходимо склонировать репозиторий:
 - Скопировать файл docker-compose.production.yml
-- Создасть файл .env с необходимыми данными указанными в .env.example
+- Создать файл .env с необходимыми данными указанными в .env.example
 - Запустить Docker
 ```sh
 docker compose -f docker-compose.production.yml up
