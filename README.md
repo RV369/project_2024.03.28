@@ -5,23 +5,19 @@
 - FastAPI
 - Python 3.9.10
 - Docker / Docker compose
-- PostgreSQL 13 / asyncpg
+- PostgreSQL 16.2 / asyncpg
 - Uvicorn
+- pydantic 2.10.6
 
 Для развертывания необходимо склонировать репозиторий:
-- git clone git@github.com:RV369/project_2024.03.28.git
-
-- установить виртуальное окружение:
-- python -m venv venv
-- source venv/Scripts/activate
-
+- Скопировать файл docker-compose.production.yml
+- Создасть файл .env с необходимыми данными указанными в .env.example
 - Запустить Docker
-- docker-compose up
+```sh
+docker compose -f docker-compose.production.yml up
+```
 
 # Документация доступна по адресам:
 - http://127.0.0.1:8000/docs
 
 - http://127.0.0.1:8000/redoc
-
-# Проект развернут по адресу :
-- http://project369.zapto.org/docs

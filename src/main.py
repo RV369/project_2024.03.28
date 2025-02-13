@@ -11,14 +11,15 @@ from sqlalchemy.future import select
 from src.db import get_session, init_db
 from src.models import UploadedFile
 
-app = FastAPI()
-
 UPLOADED_FILES_PATH = 'uploaded_files/'
 
 
-@app.on_event('startup')
-async def on_startup():
+async def lifespan(app):
     await init_db()
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 class FileSchema(BaseModel):
@@ -136,7 +137,8 @@ async def download_file(UUID):
             )
         else:
             raise HTTPException(
-                status_code=404, detail='Искомый файл отсутствует',
+                status_code=404,
+                detail='Искомый файл отсутствует',
             )
     except Exception as e:
         raise HTTPException(f'{e}', detail='Ошибка скачивания файла')

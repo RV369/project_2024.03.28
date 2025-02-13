@@ -1,6 +1,7 @@
 import os
+from typing import ClassVar
 
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -8,7 +9,7 @@ class Settings(BaseSettings):
     POSTGRESS_DB_PASSWORD: str = os.getenv('POSTGRESS_DB_PASSWORD')
     DB_DATABASE: str = os.getenv('DB_DATABASE')
     DB_PORT: str = os.getenv('DB_PORT')
-    DATABASE_URL = (
+    DATABASE_URL: ClassVar[str] = (
         f'postgresql+asyncpg://{POSTGRESS_DB_USER}:'
         f'{POSTGRESS_DB_PASSWORD}@db:{DB_PORT}/{DB_DATABASE}'
     )
